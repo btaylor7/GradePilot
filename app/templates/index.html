@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"> <!--Standard HTML code used in all templates.  -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GradePilot</title>
+    <link rel="stylesheet" href="static/css/index-style.css"> <!-- Link to CSS stylesheet, used in all HTML files -->
+</head>
+<body>
+    <div class="container"> <!-- All HTML files have been split into divs with class names after being finished, for CSS, this was done last. -->
+        <div class="welcome">
+            <h1>GradePilot: The AI Feedback Tool</h1>
+            <p class="subtitle">Get instant feedback on your answers!</p>
+        </div>
+
+        <div class="log in">
+            <p>Click the button below to log in to your account:</p>
+            <a href="{{ url_for('login') }}" class="btn">Log in here</a> <!--Flask URL_FOR method, links to login method in routes.py when clicked -->
+        </div>
+
+        <div class="disclaimer">
+            <hr />
+            <p><strong>DISCLAIMER:</strong> <em>Please be aware that artificial intelligence models may give inaccurate or out-of-date responses.</em></p>
+        </div>
+    </div>
+</body>
+</html>

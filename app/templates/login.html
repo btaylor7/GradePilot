@@ -1,0 +1,31 @@
+<!DOCTYPE html> <!-- Head tags in each HTML file are the same are are boilerplate HTML set up.-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    <link rel="stylesheet" href="static/css/login-style.css"><!--Each HTML has a link to its CSS style sheet-->
+</head>
+<body>
+    <div class="container">
+        <div class="log in">
+            <h1>Log in</h1>
+            <p>Please enter your username and password</p>
+        </div>
+
+        <div class="log in form">
+            <form action="{{ url_for('login')}}" method="POST"> <!-- Single form tag, one submission made to server, POST method sends to login method -->
+                <div class="inputname">
+                    <label for="username">Username</label>
+                    <input type="text" name="username_submitted" id="username" required> <!-- Submitted to login method as username_submitted variable -->
+                </div>
+                <div class="input password">
+                    <label for="password">Password</label>
+                    <input type="password" name="password_submitted" id="password" required> <!-- Submitted to login method as password_submitted variable -->
+                </div>
+                <button type="submit" class="btn">Log in</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Results</title>
+    <link rel="stylesheet" href="static/css/view-results-style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Progress Tracking</h1>
+        <p>Find class progress below.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Result ID</th> <!--These lines provide the title for each row, in order.-->
+                    <th>Question ID</th>
+                    <th>Material ID</th>
+                    <th>Answer ID</th>
+                    <th>Feedback</th>
+                    <th>Pass or Review</th>
+                    <th>Submitted By</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %} <!--Results passed to the template through the route method.-->
+                    <tr>
+                        <td>{{ result[0] }}</td> <!--These lines fill the columns, in the same order. This then fills each row while the for loop runs-->
+                        <td>{{ result[1] }}</td> 
+                        <td>{{ result[2] }}</td> 
+                        <td>{{ result[3] }}</td> 
+                        <td>{{ result[4] }}</td> 
+                        <td>{{ 'Pass' if result[5] else 'Review' }}</td> <!--Stored as boolean, this line replaces true or false with 'pass' or 'review'-->
+                        <td>{{ result[6] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

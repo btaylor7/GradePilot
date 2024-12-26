@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Questions</title>
+    <link rel="stylesheet" href="static/css/set-questions-style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Set Questions</h1>
+        <h2>This is where you set questions related to uploaded materials, set a prompt for ChatGPT and add a hint.</h2>
+        <p>Please click on the following link to gain a solid understanding of how you should write your prompt. The standard prompt structure underneath the prompt box is also provided as a guide.</p>
+        <a href="https://platform.openai.com/docs/guides/prompt-engineering">OpenAI Prompt Guide</a> <!--Link to external page-->
+        <form action="{{ url_for('setquestions') }}" method="POST"> <!--All info is submitted in one form to the url_for method when the method is POST-->
+
+            <div class="material-selection">
+                <label for="material">Select Material:</label>
+                <select name="materialid_submitted" id="material" required> <!--Material sent in materialid_submitted variable to routes-->
+                    {% for material in materials %} <!--Iterates over materials passed to template in setquestions method-->
+                    <option value="{{ material[0] }}">{{ material[1] }}</option> <!--material[0] is sent to server, material[1] is what the user will see in dropdown-->
+                    {% endfor %}
+                </select>
+                <br>
+            </div>
+
+            <div class="question-prompt">
+                <label for="question">Question:</label><!--These 4 lines provide text boxes to take text information, and sends them to routes in a variable-->
+                <input type="text" name="question_submitted" id="question" required>
+                <br>
+                <label for="hidden_prompt">Hidden Prompt (to give the AI context):</label>
+                <textarea name="hidden_prompt_submitted" id="hidden_prompt" rows="4" cols="50" required></textarea>
+                <p>You may find this standard prompt structure useful to copy and paste for your prompt:</p>
+                <i>The level of study is "LEVEL, E.G. GCSE". The model answer is "ANSWER". Also "EXTRA INFORMATION HERE IF NEEDED".</i>
+                <br>
+            </div>
+
+            <div class="additional-info"></div>
+                <h2>Additional Information/Hints</h2>
+                <p>Add some extra information here for your students, such as a hint or a reference to the learning material. This will appear as a hidden hint that the student can choose to view.</p>
+                <label for="additional_info">Additional Information:</label>
+                <textarea name="additional_info_submitted" id="additional_info" rows="4" cols="50"></textarea>
+                <br>
+                <button type="submit">Submit</button> <!--Material, question, prompt and hint all sent in one single submission-->
+        </div>
+        </form>
+
+        <div class="existing-questions">
+            <h2>Existing Questions</h2>
+            <ul>
+                {% for question in questions %} <!--Loop that displays all questions submitted each time the page is rendered-->
+                    <li>{{ question.question }}</li> <!--For every question in questions[], display the value for 'question' key-->
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

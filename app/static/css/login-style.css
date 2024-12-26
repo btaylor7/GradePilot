@@ -1,0 +1,44 @@
+:root {
+    --primary-colour: #0078D4;
+    --secondary-colour: #f4f4f9;
+    --text-colour: #333;
+    --secondary-text-colour: #555;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--secondary-colour);
+    color: var(--text-colour);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    }
+
+form {
+    
+}
+
+label {
+    }
+
+input[type="text"], input[type="password"] {
+    }
+
+button {
+    }
+

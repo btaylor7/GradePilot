@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Learning Materials</title>
+        <link rel="stylesheet" href="static/css/view-material-style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Learning Materials</h1>
+            <p>Here you can view your learning materials.</p>
+
+            <div class="material">
+                <ul>
+                    {% for material in materials%} <!--Loops through material variable passed through and lists it, in an unordered ul list.-->
+                    <li>
+                        <strong>{{ material[0]}}</strong><br>
+                        {{ material[1]}}
+                        <a href="{{material[2]}}" download>Download</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

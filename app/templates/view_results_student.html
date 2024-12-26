@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Results</title>
+    <link rel="stylesheet" href="static/css/view-results-style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Progress Tracking</h1>
+        <p>All of your submitted answers and results are displayed here.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Question</th> <!--The same structure and idea used in view_results.html is used here too-->
+                    <th>Answer</th>
+                    <th>Feedback</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                    <tr>
+                        <td>{{ result[1] }}</td>
+                        <td>{{ result[2] }}</td>
+                        <td>{{ result[4] }}</td>
+                        <td>{{ 'Pass' if result[5] else 'Review' }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

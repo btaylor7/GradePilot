@@ -1,0 +1,50 @@
+:root {
+    --primary-color: #0078D4;
+    --secondary-color: #f4f4f9;
+    --text-color: #333;
+    --secondary-text-color: #555;
+
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    }
+
+p {
+    }
+
+table {
+    }
+
+th, td {
+    }
+
+thead {
+    }
+
+tbody {
+    }
+
+.material-list {
+    }
+

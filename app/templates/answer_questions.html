@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Answer Questions</title>
+    <link rel="stylesheet" href="static/css/answer-questions-style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="answer">
+            <h1>Answer Questions</h1>
+            <form action="{{ url_for('answerquestions') }}" method="POST">
+                <label for="question">Question:</label>
+                <select name="question_submitted" id="question">
+                    {% for q in questions %}
+                        <option value="{{ q.question }}">{{ q.question }}</option> <!--Displays value for 'question' key in questions[] -->
+                    {% endfor %}
+                </select>
+                <br>
+                <label for="answer">Your Answer:</label>
+                <textarea name="answer_submitted" id="answer" rows="4" cols="50"></textarea><!--Typical text are size.-->
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div class="feedback"> <!--Feedback passed when rendered, if there is feedback, from OpenAI, this displays it.-->
+            {% if feedback %}
+                <h2>Feedback:</h2>
+                <p>{{ feedback }}</p>
+            {% endif %}
+        </div>
+
+        <div class="additional-information">
+        {% if additional_info %}
+            <h2>Additional Information:</h2>
+            <button onclick="toggleHint()">Show Hint</button><!--Triggers JavaScript function.-->
+            <p id="hint" style="display:none;">{{ additional_info }}</p>
+        {% endif %}
+        </div>
+
+        <div class="mark-question-selector">
+            <h2>Mark Question</h2>
+            <form action="{{ url_for('markquestion') }}" method="POST">
+                <label for="mark_question">Select Question:</label>
+                <select name="mark_question_submitted" id="mark_question">
+                    {% for q in questions %}
+                        <option value="{{q.question}}">{{q.question}}</option>
+                    {% endfor %}
+                </select>
+                <br>
+            
+
+                <label for="mark">Mark:</label>
+                <select name="mark_submitted" id="mark">
+                    <option value="pass">Pass</option>
+                    <option value="review">Review</option>
+                </select>
+                <br>
+                <input type="hidden" name="feedback_submitted" value="{{ feedback }}">
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <!--JavaScript function definition, retrieves 'hint' element
+        When 'none', this means it is hidden. Setting display to 'block' makes it visible. By default, it is hidden. -->
+        <script> 
+            function toggleHint() {
+                let hint = document.getElementById("hint");
+                if (hint.style.display === "none") { 
+                    hint.style.display = "block";
+                } else {
+                    hint.style.display = "none";
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>
+
